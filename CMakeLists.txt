@@ -30,7 +30,7 @@ if(NDARRAY_PYBIND11)
   #
   # Download pybind11 sources
   #
-  if(NOT ECLAIRS_USE_SYSTEM_PYBIND11)
+  if(NOT USE_SYSTEM_PYBIND11)
     # Fetch pybind11
     include(FetchContent)
     FetchContent_Declare(
