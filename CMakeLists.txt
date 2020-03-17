@@ -26,6 +26,28 @@ add_definitions(-std=c++11)
 # module search path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
+if(NDARRAY_PYBIND11)
+  #
+  # Download pybind11 sources
+  #
+  if(NOT ECLAIRS_USE_SYSTEM_PYBIND11)
+    # Fetch pybind11
+    include(FetchContent)
+    FetchContent_Declare(
+      pybind11
+      GIT_REPOSITORY https://github.com/pybind/pybind11
+      GIT_TAG v2.3
+      )
+    FetchContent_GetProperties(pybind11)
+    if(NOT pybind11_POPULATED)
+      FetchContent_Populate(pybind11)
+      add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
+    endif()
+  else()
+    find_package(pybind11 REQUIRED)
+  endif()
+endif(NDARRAY_PYBIND11)
+
 add_subdirectory(include)
 
 # add a target to generate API documentation with Doxygen

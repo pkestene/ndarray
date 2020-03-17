@@ -64,7 +64,7 @@ ENDIF()
 ###Pybind11 dependency tests (also depend on Eigen)
 if(NDARRAY_PYBIND11)
     if(NDARRAY_EIGEN)
-        find_package(pybind11 REQUIRED)
+        #find_package(pybind11 REQUIRED)
 
         include_directories(${PYBIND11_INCLUDE_DIR})
 
